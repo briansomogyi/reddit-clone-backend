@@ -1,5 +1,6 @@
 {
   "name": "reddit-clone-backend",
+  "type": "module",
   "packageManager": "yarn@4.4.1",
   "dependencies": {
     "cors": "^2.8.5",
@@ -9,5 +10,8 @@
   },
   "devDependencies": {
     "nodemon": "^3.1.10"
+  },
+  "scripts": {
+    "dev": "nodemon server.mjs"
   }
 }
