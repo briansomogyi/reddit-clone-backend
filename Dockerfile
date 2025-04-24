@@ -1,14 +1,20 @@
 # Use Node.js official image
-FROM node:16
+FROM node:23-alpine
 
 # Set the working directory
 WORKDIR /app
 
 # Copy package.json and yarn.lock files
 COPY package.json yarn.lock ./
+# COPY --from=dependencies /root/.yarn /root/.yarn
 
 # Install dependencies
-RUN yarn install
+RUN corepack enable yarn
+RUN corepack install -g yarn@4.6.0
+RUN yarn -v
+RUN yarn cache clean --all
+RUN yarn install --immutable
+RUN yarn bin
 
 # Copy the entire backend code
 COPY . .
